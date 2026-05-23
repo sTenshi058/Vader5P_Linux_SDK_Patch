@@ -300,11 +300,11 @@ SDL_CMAKE_COMMON=(
 
 _verify_sdl() {
     local lib="$1" bits="$2"
-    if ! readelf -d "$lib" 2>/dev/null | grep -q 'RUNPATH.*\$ORIGIN'; then
+    if ! LC_ALL=C readelf -d "$lib" 2>/dev/null | grep -q 'RUNPATH.*\$ORIGIN'; then
         warn "$lib is missing RUNPATH=\$ORIGIN — Steam's loader may not handle it correctly"
     fi
     local class
-    class="$(readelf -h "$lib" 2>/dev/null | awk '/Class:/{print $2}')"
+    class="$(LC_ALL=C readelf -h "$lib" 2>/dev/null | awk '/Class:/{print $2}')"
     if [[ "$bits" == "32" && "$class" != "ELF32" ]]; then
         err "$lib is $class, expected ELF32"
         exit 1
