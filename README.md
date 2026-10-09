@@ -6,7 +6,7 @@ Why? It's been months since the last update of the original project, and the sug
 
 I love using the Vader 5P, but the brwap method was triggering me everytime Steam said "failed to apply update, reverting changes", or having to unplug the controller / dongle because the udev rule would sometimes fail to unbind Xpad, and I don't want other people, specially those who have recently made the scary jump to Linux, to face confusion, or similar frustration.
 
-This fork had some AI assistance for debugging purposes, as this took me some trial and error.
+This fork had some AI assistance for debugging purposes, as this took me some trial and error. I'm unsure if the original had any AI usage, but I don't think so.
 
 Below I'll list the main details of this implementation, for more details on the innerworkings, please look at the original godsend of a project.
 
