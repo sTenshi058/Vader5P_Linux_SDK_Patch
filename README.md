@@ -26,7 +26,7 @@ bash scripts/install.sh --build native
 
 Make sure to close Steam completely before installation.
 
-The script makes a backup the original SDL libraries on `~/.local/share/vader5-driver/steam-backup/`, installs the patched libraries and shims, and pads each SDL file to the stock size detected on the device. Steam updates may replace the patched files, so just run the installer agaian in case it breaks.
+The script makes a backup the original SDL libraries on `~/.local/share/vader5-driver/steam-backup/`, installs the patched libraries and shims, and pads each SDL file to the stock size detected on the device. Steam updates may replace the patched files, so just run the installer again in case it breaks.
 
 Close Steam before uninstalling; `bash scripts/uninstall.sh` restores the saved libraries and retains the backups.
 
