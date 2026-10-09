@@ -1,0 +1,13 @@
+[Unit]
+Description=Unbind xpad from Flydigi Vader 5 Pro interface 0
+Documentation=https://github.com/sTenshi058/Vader5P_Linux_SDK_Patch
+DefaultDependencies=no
+After=systemd-udevd.service sysinit.target
+Before=steam-launcher.service display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/vader5-xpad-unbind.sh
+
+[Install]
+WantedBy=multi-user.target

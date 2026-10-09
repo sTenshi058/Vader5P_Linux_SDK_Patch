@@ -1,0 +1,30 @@
+# Shared cmake flags for the Steam-client SDL profile.
+# Sourced by install.sh (native fallback) and build-sdl-sniper.sh.
+#
+# Minimal Steam-client profile: video + X11 + OpenGL for the client UI,
+# HIDAPI + joystick for controller support, everything else off.
+# MinSizeRel + strip keeps the library under Steam's original file sizes.
+# RUNPATH=$ORIGIN matches what Valve ships so Steam's module loader is happy.
+
+SDL_CMAKE_COMMON=(
+    -GNinja
+    -DCMAKE_BUILD_TYPE=MinSizeRel
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+    "-DCMAKE_INSTALL_RPATH=\$ORIGIN"
+    -DCMAKE_SKIP_BUILD_RPATH=OFF
+    -DBUILD_SHARED_LIBS=ON
+    -DSDL_SHARED=ON -DSDL_STATIC=OFF
+    -DSDL_TESTS=OFF -DSDL_TEST_LIBRARY=OFF -DSDL_EXAMPLES=OFF
+    -DSDL_INSTALL_TESTS=OFF -DSDL_INSTALL_DOCS=OFF
+    -DSDL_AUDIO=OFF -DSDL_CAMERA=OFF -DSDL_DIALOG=OFF
+    -DSDL_GPU=OFF -DSDL_KMSDRM=OFF -DSDL_OFFSCREEN=OFF
+    -DSDL_OPENGLES=OFF -DSDL_PIPEWIRE=OFF -DSDL_PULSEAUDIO=OFF
+    -DSDL_SNDIO=OFF -DSDL_WAYLAND=OFF -DSDL_TRAY=OFF -DSDL_VULKAN=OFF
+    -DSDL_DBUS=OFF -DSDL_IBUS=OFF -DSDL_FRIBIDI=OFF -DSDL_LIBTHAI=OFF
+    -DSDL_JACK=OFF -DSDL_ALSA=OFF
+    -DSDL_HAPTIC=ON -DSDL_SENSOR=ON
+    -DSDL_HIDAPI=ON -DSDL_HIDAPI_JOYSTICK=ON -DSDL_HIDAPI_LIBUSB=ON
+    -DSDL_JOYSTICK=ON -DSDL_VIRTUAL_JOYSTICK=ON
+    -DSDL_VIDEO=ON -DSDL_RENDER=ON -DSDL_OPENGL=ON
+    -DSDL_X11=ON -DSDL_X11_SHARED=ON
+)

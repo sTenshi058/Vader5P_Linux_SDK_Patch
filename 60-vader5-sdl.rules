@@ -19,8 +19,9 @@
 KERNEL=="hidraw*", ATTRS{idVendor}=="37d7", ATTRS{idProduct}=="2401", \
     MODE="0660", GROUP="input", TAG+="uaccess"
 
-# 2. Unbind xpad from interface 0 on connect.
-ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", DRIVER=="xpad", \
+# 2. Retry unbinding xpad from interface 0 on connect. xpad may claim the
+#    interface after this udev event, so the helper waits briefly for it.
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", \
     ATTR{bInterfaceNumber}=="00", \
     ATTRS{idVendor}=="37d7", ATTRS{idProduct}=="2401", \
-    RUN+="/bin/sh -c 'echo -n %k > /sys/bus/usb/drivers/xpad/unbind'"
+    RUN+="/etc/vader5-xpad-unbind.sh %k"
